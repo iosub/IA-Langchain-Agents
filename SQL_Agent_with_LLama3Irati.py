@@ -6,7 +6,7 @@ print(db.get_usable_table_names())
 db.run("SELECT * FROM Artist LIMIT 10;")
 
 from langchain_community.llms import Ollama
-from langchain_community.llms import Ollama
+
 llm = Ollama(model = "llama3")#,temperature=0.2)
 #qwen2:latest 
 for chunk in llm.stream("Hi how are you?"):
