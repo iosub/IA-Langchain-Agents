@@ -7,7 +7,7 @@ db.run("SELECT * FROM Artist LIMIT 10;")
 
 from langchain_community.llms import Ollama
 
-llm = Ollama(model = "llama3")#,temperature=0.2)
+llm = Ollama(model = "llama3:8b")#,temperature=0.2)
 #qwen2:latest 
 for chunk in llm.stream("Hi how are you?"):
     print(chunk, end = "")
@@ -16,8 +16,8 @@ from langchain_community.utilities import SQLDatabase
 
 from langchain_community.utilities import SQLDatabase
 from langchain_community.utilities import SQLDatabase
-#conn_str = "mssql+pyodbc://gg:ostia@minipc/iatest?driver=ODBC+Driver+17+for+SQL+Server"
-conn_str = "mssql+pyodbc://gg:ostia@minipc/MSPLITEPRO_v3gg?driver=ODBC+Driver+17+for+SQL+Server"
+conn_str = "mssql+pyodbc://gg:ostia@minipc/iatest?driver=ODBC+Driver+17+for+SQL+Server"
+#conn_str = "mssql+pyodbc://gg:ostia@minipc/MSPLITEPRO_v3gg?driver=ODBC+Driver+17+for+SQL+Server"
 
 #conn_str = "mssql+pyodbc://gg:ostia@minipc/korta?driver=ODBC+Driver+17+for+SQL+Server"
 
@@ -75,7 +75,7 @@ print(db.table_info)
 #agent_executor = create_sql_agent(llm, db=db, agent_type="tool-calling", verbose=True, stream_runnable=False)
 #agent_executor = create_sql_agent(llm, db = db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose = True,handle_parsing_errors=True)
 #agent_executor = create_sql_agent(llm, db = db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose = True)
-agent_executor = create_sql_agent(llm, db = db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose = True, stream_runnable=False ,handle_parsing_errors=False)
+agent_executor = create_sql_agent(llm, db = db, agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose = True, stream_runnable=False ,handle_parsing_errors=True)
 
 
 #agent_executor.invoke("How many different Artists are in the database?")
