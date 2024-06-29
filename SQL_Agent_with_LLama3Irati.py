@@ -6,8 +6,10 @@ print(db.get_usable_table_names())
 db.run("SELECT * FROM Artist LIMIT 10;")
 
 from langchain_community.llms import Ollama
+from langchain_experimental.llms.ollama_functions import OllamaFunctions
 
-llm = Ollama(model = "llama3:8b")#,temperature=0.2)
+#llm = OllamaFunctions(model="llama3:8b")#, format="json")
+llm = Ollama(model = "deepseek-coder-v2:latest")#,temperature=0.2) deepseek-coder-v2:latest  starcoder2:15b  
 #qwen2:latest 
 for chunk in llm.stream("Hi how are you?"):
     print(chunk, end = "")
@@ -29,7 +31,7 @@ q="Para la empresa con codigo 1, que TIPOREG=CF en la tabla de T_ORDTER. Qué ne
 q="Para la empresa con codigo 1,  Qué necesidades de compra de cantidad de artículos tengo el 21 de diciembre del 2020, Teniendo en cuenta los pedidos que estan en la tabla T_ORDTER con TIPOREG=CF y su stock que esta en la tabla T_STOCKS"
 q="Para la empresa con codigo 1,  Qué necesidades de compra de cantidad de artículos tengo el 21 de diciembre del 2020, Teniendo en cuenta los pedidos que estan en la tabla T_ORDTER con TIPOREG=CF, su stock que esta en la tabla T_STOCKS y las ordenes de fabricacion que estan en T_ORDFAB y T_ORDFABM con TIPOREG=F" 
 q="Cuántos Clientes hay?"
-q="Cuántos Clientes hay con El nombre que contenga 'ELDU' ?"
+q="Cuántos Clientes hay con El nombre que contenga ELDU ?"
 #q="Cuántas facturas hay"
 #db = SQLDatabase.from_uri(conn_str) #("sqlite:///Chinook.db")
 #def __init__(
