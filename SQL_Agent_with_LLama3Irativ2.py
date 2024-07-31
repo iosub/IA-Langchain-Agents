@@ -13,7 +13,8 @@ from langchain_ollama import ChatOllama
 
 #llm = OllamaFunctions(model="llama3:8b")#, format="json")
 
-llm = ChatOllama(model = "deepseek-coder-v2:latest")#,temperature=0.2) deepseek-coder-v2:latest  starcoder2:15b  
+#llm = ChatOllama(model = "deepseek-coder-v2:latest")#,temperature=0.2) deepseek-coder-v2:latest  starcoder2:15b  
+llm =ChatOllama (model="llama3.1:8b-instruct-q8_0",temperature=0)
 #qwen2:latest 
 for chunk in llm.stream("Hi how are you?"):
     print(chunk, end = "")
