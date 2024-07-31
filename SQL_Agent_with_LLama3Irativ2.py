@@ -1,4 +1,6 @@
 from langchain_community.utilities import SQLDatabase
+import os
+os.environ["OLLAMA_HOST"] = "http://localhost:11434"
 
 db = SQLDatabase.from_uri("sqlite:///Chinook.db")
 print(db.dialect)
